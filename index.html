@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<title> Death Stranding Countdown </title>
+		<meta charset="utf-8">
+	</head>
+	
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+
+	
+	<body>
+	<br>	<br>	
+	
+		До выхода Death Stranding осталось:
+
+		<div id = "timeleft"></div>	
+	
+	</body>
+	
+	<style>
+	
+	html,body,table,k{ font-family: "Roboto", sans-serif;}
+	
+	@keyframes load {
+	0% {opacity: 0.1}
+	100% {opacity: 1.0}
+	}
+
+	table {
+	text-align: center;
+	padding: 20px;
+	font-size: 150;
+	margin: auto;
+	}
+	
+	body{
+	font-size: 83;
+	text-align:center;
+	vertical-align: middle;
+	}
+
+
+	#timeleft{
+	animation: load 0.2s linear;
+	}
+
+	</style>
+	
+	<script>
+		
+	function outDate(DOM_obj){
+	var today = new Date();
+	var sdata = new Date(2019, 10, 8);
+	var delta = sdata-today;
+	var seconds = delta/1000;
+	var minutes = seconds/60;
+	var hours = minutes/60;
+	
+	var daysleft = Math.floor(hours / 24)
+	var hoursleft = Math.floor(hours % 24);
+	var minutesleft = Math.floor(minutes % 60);
+	var secondsleft = Math.floor(seconds % 60);
+	DOM_obj.innerHTML = "<table><tr><th  colspan='4'> </th></tr><tr><td>" +
+	daysleft + ":</td><td>" + hoursleft + ":</td><td>" + minutesleft + ":</td><td>" + secondsleft + "</td></tr>";
+}
+
+	var obj = document.getElementById("timeleft");
+	window.onload = outDate(obj);
+	setInterval(outDate, 1000, obj);
+
+	</script>
+</html>
